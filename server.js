@@ -6,17 +6,17 @@ const PORT = process.env.PORT;
 
 const dbConnection = require('./config/database');
 
+const categoryRoutes = require('./routes/category.routes');
+
 //parse json data
 app.use(express.json()); 
 
 //connecting to database
 dbConnection();
 
-// routes mounting
-app.use('/api/v1/category', require('./routes/category.routes'));
+// routes 
 
-
-
+app.use('/api/v1/category', categoryRoutes);
 
 
 app.listen(PORT, () => {
