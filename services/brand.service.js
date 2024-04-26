@@ -1,14 +1,14 @@
 const slugify = require("slugify");
-const CategoryModel = require("../models/cate.model");
+const brandModel = require("../models/brand.model");
 
 const ApiError = require("../utils/apiError");
 
-exports.getAllCategories = async (req, res, next) => {
+exports.getBrands = async (req, res, next) => {
   const page = +req.query.page || 1;
   const limit = +req.query.limit || 5;
   const skip = (page - 1) * limit;
   try {
-    const documents = await CategoryModel.find({}).skip(skip).limit(limit);
+    const documents = await brandModel.find({}).skip(skip).limit(limit);
     if (page > 1) {
       res.send({
         result:
@@ -33,10 +33,10 @@ exports.getAllCategories = async (req, res, next) => {
   }
 };
 
-exports.getSpecificCategory = async (req, res, next) => {
+exports.getSpecificBrand = async (req, res, next) => {
   const { id } = req.params;
   try {
-    const document = await CategoryModel.findById(id);
+    const document = await brandModel.findById(id);
     res.status(200).json(document);
   } catch (err) {
     return next(new ApiError(`can't find this route ${req.originalUrl}`, 500));
@@ -45,12 +45,12 @@ exports.getSpecificCategory = async (req, res, next) => {
 
 //@access Private
 //@
-exports.createCategory = async (req, res, next) => {
+exports.createBrand = async (req, res, next) => {
   const { name } = req.body;
   const slugName = slugify(name);
 
   try {
-    const document = await CategoryModel.create({
+    const document = await brandModel.create({
       name: name,
       slug: slugName,
     });
@@ -60,18 +60,18 @@ exports.createCategory = async (req, res, next) => {
   }
 };
 
-exports.updateCategory = async (req, res, next) => {
+exports.updateBrand = async (req, res, next) => {
   const { id } = req.params;
   const { name } = req.body;
   const slugUpdated = slugify(name);
 
   try {
-    const existingCategory = await CategoryModel.findOne({ name });
+    const existingCategory = await brandModel.findOne({ name });
     if (existingCategory && existingCategory._id !== id) {
       return res.status(400).json({ error: "Category name already exists." });
     }
 
-    const updateDocument = await CategoryModel.findOneAndUpdate(
+    const updateDocument = await brandModel.findOneAndUpdate(
       { _id: id },
       { name: name, slug: slugUpdated },
       { new: true },
@@ -84,10 +84,10 @@ exports.updateCategory = async (req, res, next) => {
 };
 
 
-exports.deleteCategory = async (req, res, next) => {
+exports.deleteBrand = async (req, res, next) => {
   const { id } = req.params;
   try {
-    const deleteDocument = await CategoryModel.findOneAndDelete({ _id: id });
+    const deleteDocument = await brandModel.findOneAndDelete({ _id: id });
     res.send({ data: deleteDocument });
   } catch (err) {
     console.log(err)
