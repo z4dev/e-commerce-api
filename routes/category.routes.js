@@ -2,6 +2,7 @@ const express = require("express");
 
 const router = express.Router();
 const categoryService = require("../services/category.service");
+const uploadSingleImage = require("../middleware/uploadSingleImage");
 
 // the validation for the category
 const categoryValidation = require("../utils/validators/category.validator");
@@ -10,6 +11,7 @@ router
   .route("/")
   .get(categoryService.getAllCategories)
   .post(
+    uploadSingleImage("image"),
     categoryValidation.createCategoryValidation,
     categoryService.createCategory,
   )
@@ -32,8 +34,5 @@ router
 
   router.use("/:categoryId/subcategories", require("./subcategory.routes"));
 
-  // expaining the code above
-  // router.use("/:categoryId/subcategory
-  // .use() milddleware function that handle every request that has the path /:categoryId/subcategory
 
 module.exports = router;

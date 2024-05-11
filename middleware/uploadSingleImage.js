@@ -30,6 +30,5 @@ const uploadSingleImage = (fieldName) =>
     limits: { fileSize: 1024 * 1024 * 5 },
   }).single(fieldName);
 
-module.exports = {
-  uploadSingleImage,
-};
+module.exports =
+  uploadSingleImage

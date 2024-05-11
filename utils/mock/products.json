@@ -1,0 +1,140 @@
+
+    [
+        {
+            "subcategories": [],
+            "_id": "6635a1cab46b58430f63bbaf",
+            "title": "hello",
+            "slug": "hello",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed aliquam, quam in scelerisque dapibus, nunc libero ultricies arcu, eget gravida velit sapien ac nisi. Sed feugiat mauris non est vulputate, id semper turpis dignissim.",
+            "price": 20,
+            "priceDiscount": 19,
+            "quantity": 1,
+            "sold": 120,
+            "imageCover": "https://example.com/product-image.jpg",
+            "images": [],
+            "category": {
+                "name": "g"
+            },
+            "subcategory": "662910632d1c534b4c21f0fd",
+            "color": [
+                "Black"
+            ],
+            "brand": "662910632d1c534b4c21f0fd",
+            "ratingsAverage": 4.5,
+            "ratingsQuantity": 75,
+            "createdAt": "2024-05-04T02:47:38.544Z",
+            "updatedAt": "2024-05-04T04:09:29.414Z",
+            "__v": 0
+        },
+        {
+            "subcategories": [],
+            "_id": "6635a214b46b58430f63bbb4",
+            "title": "hgj Product",
+            "slug": "hgj-product",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed aliquam, quam in scelerisque dapibus, nunc libero ultricies arcu, eget gravida velit sapien ac nisi. Sed feugiat mauris non est vulputate, id semper turpis dignissim.",
+            "price": 49.99,
+            "priceDiscount": 329.99,
+            "quantity": 1,
+            "sold": 120,
+            "imageCover": "https://example.com/product-image.jpg",
+            "images": [],
+            "category": {
+                "name": "g"
+            },
+            "subcategory": "662910632d1c534b4c21f0fd",
+            "color": [
+                "Black"
+            ],
+            "brand": "662910632d1c534b4c21f0fd",
+            "ratingsAverage": 4.5,
+            "ratingsQuantity": 75,
+            "createdAt": "2024-05-04T02:48:52.766Z",
+            "updatedAt": "2024-05-04T02:48:52.766Z",
+            "__v": 0
+        },
+        {
+            "subcategories": [],
+            "_id": "6635a25ee2aed8f250fb26cf",
+            "title": "html",
+            "slug": "html",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed aliquam, quam in scelerisque dapibus, nunc libero ultricies arcu, eget gravida velit sapien ac nisi. Sed feugiat mauris non est vulputate, id semper turpis dignissim.",
+            "price": 49.99,
+            "priceDiscount": 329.99,
+            "quantity": 1,
+            "sold": 120,
+            "imageCover": "https://example.com/product-image.jpg",
+            "images": [],
+            "category": {
+                "name": "g"
+            },
+            "subcategory": "662910632d1c534b4c21f0fd",
+            "color": [
+                "Black"
+            ],
+            "brand": "662910632d1c534b4c21f0fd",
+            "ratingsAverage": 4.5,
+            "ratingsQuantity": 75,
+            "createdAt": "2024-05-04T02:50:06.221Z",
+            "updatedAt": "2024-05-04T02:50:06.221Z",
+            "__v": 0
+        },
+        {
+            "subcategories": [],
+            "_id": "6635a2920e2da610f2cf2e32",
+            "title": "htmlh",
+            "slug": "htmlh",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed aliquam, quam in scelerisque dapibus, nunc libero ultricies arcu, eget gravida velit sapien ac nisi. Sed feugiat mauris non est vulputate, id semper turpis dignissim.",
+            "price": 10,
+            "priceDiscount": 320,
+            "quantity": 1,
+            "sold": 120,
+            "imageCover": "https://example.com/product-image.jpg",
+            "images": [],
+            "category": {
+                "name": "g"
+            },
+            "subcategory": "662910632d1c534b4c21f0fd",
+            "color": [
+                "Black"
+            ],
+            "brand": "662910632d1c534b4c21f0fd",
+            "ratingsAverage": 4.5,
+            "ratingsQuantity": 75,
+            "createdAt": "2024-05-04T02:50:58.770Z",
+            "updatedAt": "2024-05-04T02:50:58.770Z",
+            "__v": 0
+        },
+        {
+            "subcategories": [],
+            "_id": "6635a31c322a335ae4c19579",
+            "title": "htmrweh",
+            "slug": "htmrweh",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed aliquam, quam in scelerisque dapibus, nunc libero ultricies arcu, eget gravida velit sapien ac nisi. Sed feugiat mauris non est vulputate, id semper turpis dignissim.",
+            "price": 10,
+            "priceDiscount": 320,
+            "quantity": 1,
+            "sold": 120,
+            "imageCover": "https://example.com/product-image.jpg",
+            "images": [],
+            "category": {
+                "name": "g"
+            },
+            "subcategory": "662910632d1c534b4c21f0fd",
+            "color": [
+                "Black"
+            ],
+            "brand": "662910632d1c534b4c21f0fd",
+            "ratingsAverage": 4.5,
+            "ratingsQuantity": 75,
+            "createdAt": "2024-05-04T02:53:16.708Z",
+            "updatedAt": "2024-05-04T02:53:16.708Z",
+            "__v": 0
+        }
+      
+
+
+
+
+
+    ]
+
