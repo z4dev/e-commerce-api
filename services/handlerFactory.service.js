@@ -5,7 +5,7 @@ const ApiError = require("../utils/apiError");
 const slugify = require("slugify");
 
 
-exports.deleteOne =  (Model) => async(req, res, next) => {
+exports.deleteOne =(Model)=> async(req, res, next) => {
   const { id } = req.params;
   try {
     const document = await Model.findOneAndDelete({ _id: id });
@@ -65,7 +65,7 @@ exports.createOne =  (Model) => async (req, res, next) => {
   }
 };
 
-exports.getAll =(Model) => async (req, res, next) => {
+exports.getAll = (Model) => async (req, res, next) => {
   const page = +req.query.page || 1;
   const limit = +req.query.limit || 5;
   const skip = (page - 1) * limit;
@@ -92,13 +92,13 @@ exports.getAll =(Model) => async (req, res, next) => {
       const sortBy = req.query.sort.split(",").join(" ");
       MongoDBQuery.sort(sortBy);
     } else {
-      MongoDBQuery.sort("-createdAt");
+      MongoDBQuery.sort("-createdAt"); // - means descending , + means ascending 
     }
     if (req.query.fields) {
       const fields = req.query.fields.split(",").join(" ");
       MongoDBQuery.select(fields);
     } else {
-      MongoDBQuery.select("-__v");
+      MongoDBQuery.select("-__v"); // exclude __v field , return all fields except __v
     }
     if (req.query.keyword) {
       MongoDBQuery.find({
