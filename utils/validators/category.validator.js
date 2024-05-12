@@ -11,7 +11,7 @@ exports.getCategoryValidation = [
 exports.createCategoryValidation = [
   check("name")
     .isLength({ min: 3 })
-    .withMessage("shore category name")
+    .withMessage("short category name")
     .isLength({ max: 30 })
     .withMessage("too tall category name"),
   validatorMiddleware,

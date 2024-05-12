@@ -31,8 +31,12 @@ app.use("/api/v1/brands", brandRoutes);
 app.use("/api/v1/products", productRoutes);
 
 
+//static files
+
+app.use(express.static("uploads"));
+
 app.all("*", (req, res, next) => {
-  next(new ApiError(`can't find this route ${req.originalUrl}`, 404)); // creating custom error
+  next(new ApiError(`route not found ${req.originalUrl}`, 404)); // creating custom error
 }); // this is a middleware that will be executed when the route is not found
 
 app.use(error.globalErrorHandler);

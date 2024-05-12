@@ -1,11 +1,8 @@
-
-
 const ApiError = require("../utils/apiError");
 //eslint-disable-next-line
 const slugify = require("slugify");
 
-
-exports.deleteOne =(Model)=> async(req, res, next) => {
+exports.deleteOne = (Model) => async (req, res, next) => {
   const { id } = req.params;
   try {
     const document = await Model.findOneAndDelete({ _id: id });
@@ -20,20 +17,21 @@ exports.deleteOne =(Model)=> async(req, res, next) => {
   }
 };
 
-exports.updateOne =  (Model) => async (req, res, next) => {
+exports.updateOne = (Model) => async (req, res, next) => {
   const { id } = req.params;
-  const { name } = req.body;
-  const slugUpdated = slugify(name);
+
+  const slugTxT = req.body.name ? req.body.name : req.body.title;
+  const slugUpdated = slugify(slugTxT);
 
   try {
-    const existingCategory = await Model.findOne({ id });
-    if (existingCategory && existingCategory._id !== id) {
-      return res.status(400).json({ error: "Category name already exists." });
-    }
 
+    const oldDocument = await Model.findById(id);
+    if (!oldDocument) {
+      return res.status(404).json({ error: "Category not found" });
+    }
     const updateDocument = await Model.findOneAndUpdate(
       { _id: id },
-      { name: name, slug: slugUpdated },
+      { ...req.body, slug: slugUpdated },
       { new: true },
     );
     if (!updateDocument) {
@@ -45,23 +43,15 @@ exports.updateOne =  (Model) => async (req, res, next) => {
   }
 };
 
-exports.createOne =  (Model) => async (req, res, next) => {
-  let slugName;
-  if (req.body.name) {
-    slugName = slugify(req.body.name);
-  }
-  else{
-    slugName = slugify(req.body.title);
-  }
+exports.createOne = (Model) => async (req, res, next) => {
+  const slugName = slugify(req.body.name);
 
   try {
     //eslint-disable-next-line
-    const document = await Model.create({ ...req.body, slug: slugName });
+    const document = await Model.create({...req.body, slug: slugName });
     res.status(201).json(document);
-
   } catch (err) {
-    console.error(`Error occurred: ${err}`);
-    res.status(500).send(`An error occurred: ${err}`);
+    next(new ApiError(err.message, 500));
   }
 };
 
@@ -83,8 +73,7 @@ exports.getAll = (Model) => async (req, res, next) => {
       (match) => `$${match}`,
     );
     //
-    const MongoDBQuery = Model
-      .find(JSON.parse(queryStrWithDollar))
+    const MongoDBQuery = Model.find(JSON.parse(queryStrWithDollar))
       .skip(skip)
       .limit(limit);
 
@@ -92,7 +81,7 @@ exports.getAll = (Model) => async (req, res, next) => {
       const sortBy = req.query.sort.split(",").join(" ");
       MongoDBQuery.sort(sortBy);
     } else {
-      MongoDBQuery.sort("-createdAt"); // - means descending , + means ascending 
+      MongoDBQuery.sort("-createdAt"); // - means descending , + means ascending
     }
     if (req.query.fields) {
       const fields = req.query.fields.split(",").join(" ");
@@ -112,7 +101,7 @@ exports.getAll = (Model) => async (req, res, next) => {
     const documents = await MongoDBQuery;
     res.status(200).json({ data: documents, page, limit });
   } catch (err) {
-    res.send(err.message);
+    return next(new ApiError(`can't find this route ${req.originalUrl}`, 500));
   }
 };
 

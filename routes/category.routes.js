@@ -23,6 +23,7 @@ router
     categoryService.getSpecificCategory,
   )
   .put(
+    uploadSingleImage("image"),
     categoryValidation.UpdateCategoryValidation,
     categoryService.updateCategory,
   )
