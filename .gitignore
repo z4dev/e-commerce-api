@@ -1,4 +1,3 @@
-
 # Node modules will not seen by git so write them in .gitignore 
 node_modules 
 # dotenv environment variables file

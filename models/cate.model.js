@@ -21,6 +21,12 @@ const categorySchema = new mongoose.Schema(
   { timestamps: true },
 ); // timestamps: true adds createdAt and updatedAt fields
 
+setImageUrl = (doc) => {
+  if (doc.image) doc.image = `${process.env.BASE_URL}/categories/${doc.image}`;
+};
+
+categorySchema.post("init", (doc) => setImageUrl(doc));
+categorySchema.post("save", (doc) => setImageUrl(doc));
 
 const Category = mongoose.model("Category", categorySchema);
 

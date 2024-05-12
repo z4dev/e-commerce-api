@@ -24,7 +24,6 @@ exports.updateOne = (Model) => async (req, res, next) => {
   const slugUpdated = slugify(slugTxT);
 
   try {
-
     const oldDocument = await Model.findById(id);
     if (!oldDocument) {
       return res.status(404).json({ error: "Category not found" });
@@ -48,7 +47,7 @@ exports.createOne = (Model) => async (req, res, next) => {
 
   try {
     //eslint-disable-next-line
-    const document = await Model.create({...req.body, slug: slugName });
+    const document = await Model.create({ ...req.body, slug: slugName });
     res.status(201).json(document);
   } catch (err) {
     next(new ApiError(err.message, 500));
@@ -101,7 +100,7 @@ exports.getAll = (Model) => async (req, res, next) => {
     const documents = await MongoDBQuery;
     res.status(200).json({ data: documents, page, limit });
   } catch (err) {
-    return next(new ApiError(`can't find this route ${req.originalUrl}`, 500));
+    res.status(500).json({ error: err.message });
   }
 };
 
