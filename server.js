@@ -15,6 +15,7 @@ const categoryRoutes = require("./routes/category.routes");
 const subCategoryRoutes = require("./routes/subcategory.routes");
 const brandRoutes = require("./routes/brand.routes");
 const productRoutes = require("./routes/product.routes");
+const userRoutes = require("./routes/user.routes");
 
 const error = require("./middleware/errorHandler");
 
@@ -29,7 +30,7 @@ app.use("/api/v1/categories", categoryRoutes);
 app.use("/api/v1/subcategories", subCategoryRoutes);
 app.use("/api/v1/brands", brandRoutes);
 app.use("/api/v1/products", productRoutes);
-
+app.use("/api/v1/users", userRoutes);
 
 //static files
 
